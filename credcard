@@ -46,9 +46,38 @@ for (let j = 0; j < card.length; j++) {
     return false;
   }
 }
-console.log(validateCred(mystery5));
 
+
+//De las mystery cards, las nro 1, 3 y 4 son invalidas
 
 function findInvalidCards(nestedCard) {
-  
+  const invalidCards = [];
+for (let i = 0; i < nestedCard.length - 1; i++) {
+  if (validateCred(nestedCard[i]) === false) {
+    invalidCards.push(nestedCard[i]);
+    } 
+  }
+  return invalidCards;
+}    
+
+//primero cargo todas las companiuas y luego creo otro condicional que me saca las companias que estan repetidas
+function idInvalidCardCompanies(nestedArr) {
+  const companies = [];
+  for (let i = 0; i < invalidCards.length - 1; i++) {
+    switch(firstdigit) {
+  case 3:
+    companies = 'It is certain';
+    break;
+  case 4:
+    eightBall = 'It is decidedly so';
+    break;
+  case 5:
+    eightBall = 'Reply hazy try again';
+    break;
+  case 6:
+} else {
+  console.log('Company not found');
+}
+  }
+  return companies;
 }
