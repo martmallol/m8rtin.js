@@ -25,14 +25,13 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 function validateCred(card) {
-       
-  let i = card.length - 1;
-  
-  while(card[i] > 0) {
+  //En esta funcion empleo el algoritmo matematico de Luhn     
+  let i = (card.length - 2);
+  while(i >= 0) {
     //Tengo que fijarme si esta bien que card[i] no tenga que updatearlo 2 veces en una misma linea
-  if(card[i] > 5) {
-   card[i]
-  }  else { card[i] = (card[i] * 2) - 9 };
+  if(card[i] < 5) {
+   card[i] *= 2
+  }  else { card[i] = card[i] * 2 - 9 };
   i -= 2;
   }
   
@@ -47,4 +46,9 @@ for (let j = 0; j < card.length; j++) {
     return false;
   }
 }
-console.log(validateCred(invalid1));
+console.log(validateCred(mystery5));
+
+
+function findInvalidCards(nestedCard) {
+  
+}
