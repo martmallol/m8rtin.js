@@ -49,35 +49,50 @@ for (let j = 0; j < card.length; j++) {
 
 
 //De las mystery cards, las nro 1, 3 y 4 son invalidas
+  const invalidCards = [];
 
 function findInvalidCards(nestedCard) {
-  const invalidCards = [];
 for (let i = 0; i < nestedCard.length - 1; i++) {
   if (validateCred(nestedCard[i]) === false) {
     invalidCards.push(nestedCard[i]);
     } 
   }
   return invalidCards;
-}    
+}
+
+console.log(findInvalidCards(batch))
 
 //primero cargo todas las companiuas y luego creo otro condicional que me saca las companias que estan repetidas
 function idInvalidCardCompanies(nestedArr) {
   const companies = [];
-  for (let i = 0; i < invalidCards.length - 1; i++) {
-    switch(firstdigit) {
+    let firstDigit = nestedArr.map(([i])=> i);
+console.log(firstDigit);
+  
+   for (let v = 0; v < nestedArr.length; v++) {
+    switch(firstDigit[v]) {
   case 3:
-    companies = 'It is certain';
+    companies.push('Amex');
     break;
   case 4:
-    eightBall = 'It is decidedly so';
+     companies.push('Visa');
     break;
   case 5:
-    eightBall = 'Reply hazy try again';
+     companies.push('Mastercard');
     break;
   case 6:
-} else {
-  console.log('Company not found');
-}
+     companies.push('Discover');
+    break;
+  case 1 || 2 || 7 || 8 || 9 || 0:
+     console.log('Company not found');
+    }  
   }
+  for (let j = 0; j < companies.length; j++) {
+  for (let k = 0; k < companies.length; k++) {
+    if ((companies[j] === companies[k]) && j !== k) {
+      companies.splice(k, 1);
+    }
+  }
+};
   return companies;
 }
+console.log(idInvalidCardCompanies(invalidCards))
