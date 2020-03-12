@@ -36,7 +36,7 @@ const team = {
   opponentPoints: 3
 }
   ],
-//No agrego setters porque no quiero que nadie cambie la informacion. Agrego getters para poder acceder a las keys como propiedades
+//No agrego setters porque no quiero que nadie cambie la informacion. Agrego getters para poder acceder a las keys como propiedades. Asi puedo acceder a ellas en el mismo codigo para agregarles cosas luego.
   get players() {
     return this._players;
   },
