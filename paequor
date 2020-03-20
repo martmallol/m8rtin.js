@@ -22,15 +22,16 @@ const pAequorFactory = (number, array15bases) => {
     mutate() {
      let randomIndex = Math.floor(Math.random() * this.dna.length);
      let randomBase = ''
+     
      do {
        randomBase = returnRandBase();
      }
-      while (randomIndex === randomBase) {
+      while (randomIndex === randomBase);
+      
       if(randomIndex !== randomBase) {
         this.dna.splice(randomIndex, 1, randomBase);
       }
-        return this.dna;
-};   
+        return this.dna;  
     },
 // otro metodo que toma a otro objeto de paeqor como parametro y compara el dna de un objeto con el del objeto pasado como parametro. se computan cuantas bases son identicas Y en el mismo index. el metodo returns un consolelog que dice el porcentaje de similaritud entre los dos dna   
     compareDNA(object) {
@@ -73,3 +74,28 @@ console.log('ESPACIO PUBLICITARIO');
 console.log(pAequor1.compareDNA(pAequor2));
 console.log(pAequor1.mutate());
 console.log(pAequor1.willLikelySurvive());
+
+/*
+Tengo que crear 30 pAequors que pueden sobrevivir. Luego los almaceno en un array.
+Para eso lo que hago es un loop do...while. En el cual, mientras no haya 30 muestras capaces de sobrevivir, no se paran de testear muestras.
+Hago un array vacio, donde voy a almacenar las pruebas exitosas. Luego creo un loop en el cual, se crea una variable que hace un paequor. Si este paequor puede sobrevivir, se lo agrega al array y el contador de pruebas exitosas sube. 
+Y asi se repite el proceso hasta que este contador llega a 30. MIentras tanto, el otro contador, que sigue las cantidades de muestras que se hacen, sube desinteresadamente, no le importa si la muestra sobrevive o no, por eso la variable "testeo" no esta dentro del if
+*/
+let studyArr = [];
+let cantMuestras = 0;
+let testeo = 1;
+let nrosExitosos= 0;
+do {
+  let pruebaLabo =  pAequorFactory(testeo, mockUpStrand());
+  testeo++;
+  if(pruebaLabo.willLikelySurvive() === true) {
+  nrosExitosos++;  
+  cantMuestras++;  
+    studyArr.push({PruebaNro: pruebaLabo.specimenNum,
+                   ADN: pruebaLabo.dna,
+                   PruebaExitosaNro: nrosExitosos});
+  }; 
+     }
+  while (30 > cantMuestras);
+
+console.log(studyArr);
