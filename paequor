@@ -60,6 +60,26 @@ for (let i = 0; i < this.dna.length; i++) {
       } else {
         return false;
       }
+    },
+// Creo un metodo que returns el DNA strand complementario al strand original del objeto. Una A matchea con una T, y una C matchea con una G 
+    complementStrand() {
+    let complementDNA = [];
+      for (let i = 0; i < this.dna.length; i++) {
+    switch(this.dna[i]) {
+  case 'A':
+    complementDNA.push('T');
+    break;
+  case 'T':
+     complementDNA.push('A');
+    break;
+  case 'C':
+     complementDNA.push('G');
+    break;
+  case 'G':
+     complementDNA.push('C');
+    }  
+  }
+   return complementDNA;   
     }
   }
 };
@@ -67,9 +87,11 @@ for (let i = 0; i < this.dna.length; i++) {
 const pAequor1 =  pAequorFactory(1, mockUpStrand());
 const pAequor2 =  pAequorFactory(2, mockUpStrand());
 
-// Imprimo mensajes de prueba para ver si todo marcha bien 
+// PRUEBAS: Imprimo mensajes de prueba para ver si todo marcha bien 
 console.log(pAequor1);
+console.log(pAequor1.complementStrand());
 console.log(pAequor2);
+console.log(pAequor2.complementStrand());
 console.log('ESPACIO PUBLICITARIO');
 console.log(pAequor1.compareDNA(pAequor2));
 console.log(pAequor1.mutate());
@@ -98,4 +120,5 @@ do {
      }
   while (30 > cantMuestras);
 
+//Llamo a los 30 casos de estudio exitosos a la consola
 console.log(studyArr);
