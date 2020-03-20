@@ -1,0 +1,75 @@
+// Returns a random DNA base
+const returnRandBase = () => {
+  const dnaBases = ['A', 'T', 'C', 'G']
+  return dnaBases[Math.floor(Math.random() * 4)] 
+}
+
+// Returns a random single stand of DNA containing 15 bases
+const mockUpStrand = () => {
+  const newStrand = []
+  for (let i = 0; i < 15; i++) {
+    newStrand.push(returnRandBase())
+  }
+  return newStrand
+}
+
+
+const pAequorFactory = (number, array15bases) => {
+  return {
+    specimenNum: number,
+    dna: array15bases,
+//metodo que selecciona de manera random un index de array15bases y que cambia su valor por un index random de dnabases que no tenga el mismo valor que el que tenia el index originalmente    
+    mutate() {
+     let randomIndex = Math.floor(Math.random() * this.dna.length);
+     let randomBase = ''
+     do {
+       randomBase = returnRandBase();
+     }
+      while (randomIndex === randomBase) {
+      if(randomIndex !== randomBase) {
+        this.dna.splice(randomIndex, 1, randomBase);
+      }
+        return this.dna;
+};   
+    },
+// otro metodo que toma a otro objeto de paeqor como parametro y compara el dna de un objeto con el del objeto pasado como parametro. se computan cuantas bases son identicas Y en el mismo index. el metodo returns un consolelog que dice el porcentaje de similaritud entre los dos dna   
+    compareDNA(object) {
+   let identicalCases = 0;
+for (let i = 0; i < this.dna.length; i++) {
+  for (let j = 0; j < object.dna.length; j++) {
+    if ((this.dna[i] === object.dna[j]) && i === j) {
+      identicalCases++;
+    }
+  }
+}; 
+      let percentageDNA = (identicalCases / this.dna.length)*100;
+      return `${this.name} and ${object.name} have ${percentageDNA}% DNA in common`   
+    },
+// Ahora creo un metodo que me dice si el objeto va a sobrevivir, me devuelve un booleano. Para eso, su DNA tiene que estar conformado con, al menos, un 60% de bases C o G.    
+    willLikelySurvive() {
+      let strongDNA = 0;
+      let strongPercentage = 60 * this.dna.length /100;
+      for (let i = 0; i < this.dna.length; i++) {
+        if(this.dna[i] === 'C' || this.dna[i] === 'G') {
+          strongDNA++;
+        }
+      }
+      if(strongDNA  >= strongPercentage) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+};
+//Creo dos objetos para compararlos
+const pAequor1 =  pAequorFactory(1, mockUpStrand());
+const pAequor2 =  pAequorFactory(2, mockUpStrand());
+
+//Imprimo mensajes de prueba para ver si todo marcha bien (ME FALTA LLAMAR BIEN LOS NOMBRES DE PAEQUOR1 Y PAEQUOR2 EN .compareDNA)
+console.log(pAequor1);
+console.log(pAequor2);
+console.log('ESPACIO PUBLICITARIO');
+console.log(pAequor1.compareDNA(pAequor2));
+console.log(pAequor1.mutate());
+console.log(pAequor1.willLikelySurvive());
