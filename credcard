@@ -95,4 +95,16 @@ console.log(firstDigit);
 };
   return companies;
 }
-console.log(idInvalidCardCompanies(invalidCards))
+
+console.log(idInvalidCardCompanies(invalidCards));
+
+function insertCreditCardNumber(num) {
+  let credCard = [];
+  let numArr = num.split(' ');
+  for (let i = 0; i < numArr[0].length; i++) {
+    credCard.push(numArr[0][i]);
+  }
+  return credCard.map(x => +x);
+}; 
+
+console.log(insertCreditCardNumber('453967790801680'));
