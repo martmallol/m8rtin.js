@@ -104,7 +104,7 @@ function insertCreditCardNumber(num) {
   for (let i = 0; i < numArr[0].length; i++) {
     credCard.push(numArr[0][i]);
   }
-  return credCard.map(x => +x);
+  return credCard.map(Number);
 }; 
 
 console.log(insertCreditCardNumber('453967790801680'));
