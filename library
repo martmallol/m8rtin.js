@@ -16,13 +16,21 @@ class Media {
   get ratings() {
     return this._ratings;
   }
+
+  set isCheckedOut(isCheckedOut) {
+    return this._isCheckedOut = isCheckedOut;
+  }
   
   getAverageRating() {
-
+    let ratingSum = this._ratings.reduce((a, b) => a + b, 0) / this._ratings.length;
+    return ratingSum;
   }
 
   toggleCheckOutStatus() {
-
+    if(this._isCheckedOut === false) {
+      this._isCheckedOut = true;
+    } else {
+      this._isCheckedOut = false;}
   }
   
   addRating(newRating) {
@@ -77,4 +85,3 @@ class CD extends Media {
     return this._songs;
   }
 }
-
