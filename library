@@ -34,7 +34,9 @@ class Media {
   }
   
   addRating(newRating) {
-    this._ratings.push(newRating);
+    if(0 < newRating < 6) {
+      this._ratings.push(newRating);
+    }
   }
 }
 
@@ -85,3 +87,18 @@ class CD extends Media {
     return this._songs;
   }
 }
+
+//Nueva Book instance
+const historyOfEverything = new Book('A Short History of Nearly Everything', 'Bill Bryson', 544);
+//Cambio el check out status usando el metodo que cree en la clase madre "Media"
+historyOfEverything.toggleCheckOutStatus();
+//Añado algunos ratings
+historyOfEverything.addRating(6);
+historyOfEverything.addRating(5);
+historyOfEverything.addRating(5);
+//Pruebo en la consola
+console.log(historyOfEverything.ratings);
+console.log(historyOfEverything.getAverageRating());
+
+//Nueva Movie instance
+const speed = new Movie('Speed’, ‘Jan de Bont', 116);
