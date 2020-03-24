@@ -23,7 +23,7 @@ class School{
 	  }
 	  
 	  quickFacts() {
-	    return `${this._name} educates ${this._numberOfStudents} students at the ${this._level} school level.`;
+	    return console.log(`${this._name} educates ${this._numberOfStudents} students at the ${this._level} school level.`);
 	  }
 	
 	  static pickSubstituteTeacher(substituteTeachers) {
@@ -34,7 +34,7 @@ class School{
     };	
 
 //Primera clase-hija, Primary.
-class Primary extends School {
+class PrimarySchool extends School {
 	  constructor(name, numberOfStudents, pickupPolicy) {
 	    super(name, 'primary', numberOfStudents);
 	    this._pickupPolicy = pickupPolicy;
@@ -46,14 +46,14 @@ class Primary extends School {
 	};
 
 //Segunda clase-hija, Middle.
-class Middle extends School {
+class MiddleSchool extends School {
       constructor(name, numberOfStudents) {
 	    super(name, 'middle', numberOfStudents);
 	  }
     };
 
 //Tercera clase-hija, High.
-class High extends School {
+class HighSchool extends School {
       constructor(name, numberOfStudents, sportsTeams) {
         super(name, 'high', numberOfStudents);
         this._sportsTeams = sportsTeams;
@@ -62,3 +62,13 @@ class High extends School {
             return this._sportsTeams;
           }
       };
+
+//Creo una instance de PrimarySchool y pruebo los metodos que cree
+const lorraineHansbury = new PrimarySchool('Lorraine Hansbury', 514, 'Students must be picked up by a parent, guardian, or a family member over the age of 13.');
+lorraineHansbury.quickFacts();
+
+//Cargo un array al static method que cree previamente en School.
+const sub = School.pickSubstituteTeacher(['Jamal Crawford', 'Lou Williams', 'J. R. Smith', 'James Harden', 'Jason Terry', 'Manu Ginobili']);
+
+//Creo una instance de HighSchool y termino el proyecto
+const alSmith = new HighSchool('Al E. Smith', 415, ['Baseball', 'Basketball', 'Volleyball', 'Track and Field']);
