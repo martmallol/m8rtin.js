@@ -4,7 +4,6 @@ let Employee = {
   salary: 100000
 };
 
-
 //Establece en un objeto, los distintos niveles de empleados basados en sus sueldos. Alli quedan documentados los impuestos para cada nivel, los beneficios, como tambien el salario minimo y maximo de cada nivel.
 let payGrades = {
   entryLevel: { taxMultiplier: .05, benefits: ['health'], minSalary: 10000, maxSalary: 49999 },
