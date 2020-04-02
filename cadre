@@ -1,3 +1,5 @@
+//EMPLOYEE.JS
+
 let Employee = {
   salary: 100000
 };
@@ -47,12 +49,7 @@ function reimbursementEligibility() {
 export { Employee, getCadre as cadre, calculateTax as tax, getBenefits as benefits, calculateBonus as bonus, reimbursementEligibility as reimbursement };
 
 
-
-
-
-
-
-
+//WORKAROUND.JS
 
 
 import { Employee, cadre, tax, benefits, bonus, reimbursement } from './employee';
