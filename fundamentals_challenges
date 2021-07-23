@@ -1,0 +1,275 @@
+// Challenges de Codecademy
+/* 1) 
+The most common minimum age to vote is 18. Write a function canIVote() that takes in a number, 
+representing the person’s age, and returns the boolean true if they are 18 years old or older, 
+and the boolean false if they are not. */
+
+const canIVote = age => {
+  return age > 17;
+};
+
+console.log(canIVote(19)) // Should print true
+
+/* 2)
+Write a function that takes in two strings, and returns 'You agree!' if the two strings are the 
+same, and 'You disagree!' if the two strings are different.
+/*
+
+const agreeOrDisagree = (first, second) => {
+    if (first === second) {
+        return 'You agree!'
+    } else {
+        return 'You disagree!'
+    }
+}
+
+/*
+// As a function declaration:
+function agreeOrDisagree(first, second) {
+   if (first === second) {
+        return 'You agree!'
+    } else {
+        return 'You disagree!'
+    }
+}
+
+// As a ternary: 
+const agreeOrDisagree = (first, second) => (first === second) ? 'You agree!' : 'You disagree!'
+*/
+
+console.log(agreeOrDisagree("yep", "yep"))  //Should print true
+
+/* 3)
+Write a function, lifePhase(), that takes in a person’s age, as a number, and returns
+which phase of life they are in.
+/*
+
+const lifePhase = age => {
+    if (age < 0 || age > 140) {
+        return 'This is not a valid age'
+    } else if (age < 4) {
+        return 'baby'
+    } else if (age < 13) {
+        return 'child'
+    } else if (age < 20) {
+        return 'teen'
+    } else if (age < 65) {
+        return 'adult'
+    } else {
+        return 'senior citizen'
+    }
+}
+
+console.log(lifePhase(5)) 
+
+/* 4)
+Write a function, finalGrade(). It should:
+-take three arguments of type number
+-find the average of those three numbers
+-return the letter grade (as a string) that the average corresponds to
+-return ‘You have entered an invalid grade.’ if any of the three grades are less 
+than 0 or greater than 100
+*/
+
+function finalGrade(first, second, third) {
+  if ((first < 0 || first > 100) || (second < 0 || second > 100) ||     (third < 0 || third > 100)) {
+    return 'You have entered an invalid grade.';
+  } else {
+    let average = (first + second + third)/3;
+    if (average < 60) {
+      return 'F';
+    }  else if (average < 70) {
+      return 'D';
+    } else if (average < 80) {
+      return 'C';
+    } else if (average < 90) {
+      return 'B';
+    } else if (average < 100) {
+      return 'A';
+    }
+  }
+}
+
+// console.log(finalGrade(99, 92, 95)) // Should print 'A'
+
+/* 5)
+Write a function, reportingForDuty(), that has two string parameters, rank and lastName, and 
+returns a string in the following format: ‘rank lastName reporting for duty!’
+*/
+
+const reportingForDuty = (rank, lastName) => rank + " " + lastName + " " + "reporting for duty!";
+
+console.log(reportingForDuty('Private', 'Fido')) // Should return 'Private Fido reporting for duty!'
+
+/* 6)
+We wrote a function, rollTheDice(), which is supposed to simulate two dice being rolled and 
+totalled. It’s close to doing what we want, but there’s something not quite right.
+Can you fix our code, please?
+*/
+
+const rollTheDice = () => {
+  // Math.random() gives us a random number from 0 up to, but not including, 1
+  // We multiplied that by 6 to get a number between 0 and up to, but not including, 6
+  // But since we actually wanted numbers from 1 to 6, inclusive, we added 1
+    let die1 = Math.floor(Math.random() * 6 + 1); //Agregue el Math.floor para redondearlo (lo pasa de float a int)
+    let die2 = Math.floor(Math.random() * 6 + 1); //Agregue el Math.floor para redondearlo (lo pasa de float a int)
+    return die1 + die2;
+}
+
+console.log(rollTheDice())
+
+/* 7)
+Write a function, calculateWeight(). It should:
+-have two parameters: earthWeight and planet
+-expect earthWeight to be a number
+-expect planet to be a string
+-return a number representing what that Earth-weight would equate to on the planet passed in.
+*/
+
+const calculateWeight = (earthWeight, planet) => {
+  switch (planet) {
+    case 'Mercury':
+      return earthWeight * 0.378;
+      break;
+    case 'Venus':
+      return earthWeight * 0.907;
+      break; 
+    case 'Mars':
+      return earthWeight * 0.377;
+      break;  
+    case 'Jupiter':
+      return earthWeight * 2.36;
+      break;  
+    case 'Saturn':
+      return earthWeight * 0.916;
+      break;  
+    default :
+      return 'Invalid Planet Entry. Try: Mercury, Venus, Mars, Jupiter, or Saturn.' 
+  }
+}
+
+/* 8)
+Write a function, truthyOrFalsy(), that takes in any value and returns true if that value is truthy 
+and false if that value is falsy.
+*/
+
+const truthyOrFalsy = (goku) => {
+  if (goku) {
+    return true;
+  } else {
+    return false;
+  }
+}  
+
+console.log(truthyOrFalsy('')) // False
+console.log(truthyOrFalsy('a')) // True 
+console.log(truthyOrFalsy(1392)) // True
+console.log(truthyOrFalsy(0)) // Should print false
+
+/* 9)
+Write a function, sillySentence(), that has 3 string parameters and returns the following silly sentence 
+with the blanks filled in by the arguments passed into the function:
+sillySentence('excited', 'love', 'functions'); 
+// Should return 'I am so excited because I love coding! Time to write some more awesome functions!'
+*/
+
+const sillySentence = (adjective, verb, noun) => 'I am so ' + adjective + ' because I ' + verb + ' coding! Time to write some more awesome ' + noun + '!'
+
+console.log(sillySentence('excited', 'love', 'functions')) 
+console.log(sillySentence('messi', 'maradona', 'duki')) 
+
+/* 10
+Write a function, howOld(), that has two number parameters, age and year, and returns how old someone 
+who is currently that age was (or will be) during that year. 
+Handle three different cases:
+-If the year is in the future, you should return a string in the following format:
+  'You will be [calculated age] in the year [year passed in]'
+-If the year is before they were born, you should return a string in the following format:
+  'The year [year passed in] was [calculated number of years] years before you were born'
+-If the year is in the past but not before the person was born, you should return a string in the following format:
+  'You were [calculated age] in the year [year passed in]'
+*/
+
+const howOld = (age, year) => {
+  if (year > 2021) {
+    const newAge = age + (year - 2021);
+    return 'You will be ' + newAge + ' in the year ' + year + '';
+  } else if (year < 2021 - age) {
+    const yearsBefore = (2021 - year) - age;
+    return 'The year ' + year + ' was ' + yearsBefore + ' years before you were born';
+  } else {
+    const previousAge = age - (2021 - year);
+    return 'You were ' + previousAge + ' in the year ' + year + '';
+  }
+}
+
+console.log(howOld(22, 2002));
+console.log(howOld(22, 1987));
+console.log(howOld(22, 2054));
+
+/* 11
+Create a function, tipCalculator(), that has two parameters, a string representing the quality of the 
+service received and a number representing the total cost.
+
+Return the tip, as a number, based on the following:
+-‘bad’ should return a 5% tip
+-‘ok’ should return a 15% tip
+-‘good’ should return a 20% tip
+-‘excellent’ should return a 30% tip
+-all other inputs should default to 18%
+*/
+
+const tipCalculator = (quality, total) => {
+  switch(quality) {
+    case 'bad': 
+      return total * 0.05;
+      break;
+    case 'ok':
+      return total * 0.15;
+      break;
+    case 'good':
+      return total * 0.20;
+      break;
+    case 'excellent':
+      return total * 0.30;
+      break;
+    default : 
+      return total * 0.18;
+  }
+}
+
+console.log(tipCalculator('good', 100)) //should return 20
+
+/* 12
+Write a function, toEmoticon(), that takes in a string and returns the corresponding emoticon as a string. 
+'shrug' should return '|_{"}_|'
+'smiley face' should return ':)'
+'frowny face' should return':('
+'winky face' should return ';)'
+'heart' should return '<3'
+any other input should return '|_(* ~ *)_|'
+*/
+
+const toEmoticon = emoji => {
+  switch(emoji) {
+    case 'shrug':
+      return '|_{"}_|';
+      break;
+    case 'smiley face':
+      return ':)';
+      break;
+    case 'frowny face':
+      return ':(';
+      break;
+    case 'winky face':
+      return ';)';
+      break;
+    case 'heart':
+      return '<3';
+      break;
+    default:
+      return '|_(* ~ *)_|';
+  }
+}
+
+console.log(toEmoticon("whatever")) // Should print  '|_(* ~ *)_|'
