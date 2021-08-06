@@ -1,1 +1,37 @@
 Comandos:
+CUANDO NO CAMBIE NADA LOS ARCHIVOS:
+$ node message-mixer.js ['caesar'|'symbol'|'reverse'] [amount]
+$ node message-mixer.js caesar 4
+Enter the message you would like to encrypt...
+> hello world
+ 
+Here is your encrypted message:
+> lipps asvph
+ 
+$ node message-mixer.js 'reverse'
+Enter the message you would like to encrypt...
+> hello world
+ 
+Here is your encrypted message:
+> olleh dlrow
+
+
+CON ENCRYPTORS.JS YA FUNCIONANDO COMO MODULO DE EXPORTACION:
+$ node message-mixer.js caesar 4
+Enter the message you would like to encrypt...
+> cnawp fkx!
+
+Here is your encrypted message:
+> great job!
+
+CON SUPERENCODER.JS YA TERMINADO: 
+
+$ node super-encoder.js encode
+Enter the message you would like to encrypt...
+> hello world                 
+0113p l1z0e
+
+$ node super-encoder.js decode
+Enter the message you would like to encrypt...
+> 0113p l1z0e
+hello world
