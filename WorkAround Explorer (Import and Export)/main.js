@@ -1,8 +1,12 @@
-// TODO: Add your import statements here.
+// Importo las funciones del modulo 'salaryData.js' y 'workAroundModule.js'
+import { getCompanies, getRoles } from './modules/salaryData.js';
+import { getAverageSalaryByRole, getAverageSalaryByCompany, getSalaryAtCompany, getIndustryAverageSalary } from './modules/workAroundModule.js';
 
-// TODO: Get the companies and roles using the salaryData module.
-const companies = [];
-const roles = [];
+// Ahora tengo un array con las companias y sus roles. Proporcionados gracias a las dos funciones que importe desde salaryData.
+const companies = getCompanies();
+const roles = getRoles();
+
+//Para que este archivo funcione, tengo que cambiar su tipo en 'index.html'. Tengo que asignarle el type = 'module'. (LISTO)
 
 // Create input buttons for every company and role represented in the data.
 renderInputButtons(companies, 'company');
@@ -53,10 +57,10 @@ function updateResults(){
   if (!company || !role) { return; }
 
   // TODO: Use the workAroundModule functions to calculate the needed data.
-  const averageSalaryByRole = 0;
-  const averageSalaryByCompany = 0;
-  const salary = 0;
-  const industryAverageSalary = 0;
+  const averageSalaryByRole = getAverageSalaryByRole(role);
+  const averageSalaryByCompany = getAverageSalaryByCompany(company);
+  const salary = getSalaryAtCompany(role, company);
+  const industryAverageSalary = getIndustryAverageSalary();
 
   // Render them to the screen.
   document.getElementById('salarySelected').innerText = `The salary for ${role}s at ${company} is \$${salary}`;
@@ -64,6 +68,3 @@ function updateResults(){
   document.getElementById('salaryAverageByCompany').innerText = `The average salary at ${company} is \$${averageSalaryByCompany}`;
   document.getElementById('salaryAverageIndustry').innerText = `The average salary in the Tech industry is \$${industryAverageSalary}`;
 }
-
-
-
