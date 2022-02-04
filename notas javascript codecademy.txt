@@ -1572,7 +1572,7 @@ array containing four promises (returned from required-in functions). Next, we l
 and log each item to the console. The first element in resultArray is the resolved value of the asyncTask1() 
 promise, the second is the value of the asyncTask2() promise, and so on.
 
------LECCION 16-----
+-----LECCION 17-----
 HTTP REQUESTS: One of JavaScript’s greatest assets is its an asynchronous language. AJAX, which stands for 
 Asynchronous JavaScript and XML, is a set of tools that are used together to take advantage of JavaScript’s 
 asynchronous capabilities.
@@ -1640,7 +1640,7 @@ xhr.onreadystatechange = () => {
 xhr.open('POST', url);
 xhr.send(data);
 
------LECCION 17-----
+-----LECCION 18-----
 FETCH() FUNCTION:
 * Creates a request object that contains relevant information that an API needs.
 * Sends that request object to the API endpoint provided.
